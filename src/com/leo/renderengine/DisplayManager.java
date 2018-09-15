@@ -19,7 +19,8 @@ public class DisplayManager {
 
     public static void createDisplay() {
 
-        ContextAttribs attribs = new ContextAttribs(GL_MAJOR_VERSION,GL_MINOR_VERSION).withForwardCompatible(true).withProfileCore(true);
+        // GL Major and Minor versions are OpenGL version numbers
+        ContextAttribs attribs = new ContextAttribs(GL_MAJOR_VERSION, GL_MINOR_VERSION).withForwardCompatible(true).withProfileCore(true);
 
         try {
             Display.setDisplayMode(new DisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -29,6 +30,7 @@ public class DisplayManager {
             e.printStackTrace();
         }
 
+        // Setting GL Viewport to use the whole window
         GL11.glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     }
@@ -43,6 +45,12 @@ public class DisplayManager {
     public static void closeDisplay() {
 
         Display.destroy();
+
+    }
+
+    public static boolean shouldClose() {
+
+        return Display.isCloseRequested();
 
     }
 
