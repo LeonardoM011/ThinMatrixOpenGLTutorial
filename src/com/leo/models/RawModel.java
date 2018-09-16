@@ -1,4 +1,4 @@
-package com.leo.renderengine;
+package com.leo.models;
 
 public class RawModel {
 
@@ -6,8 +6,10 @@ public class RawModel {
     private int vertexCount;
 
     public RawModel(int vaoID, int vertexCount) {
+
         this.vaoID = vaoID;
         this.vertexCount = vertexCount;
+
     }
 
     public int getVaoID() {
