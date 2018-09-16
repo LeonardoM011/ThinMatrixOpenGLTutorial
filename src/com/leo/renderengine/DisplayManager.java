@@ -16,18 +16,20 @@ public class DisplayManager {
     private static final int FPS_CAP = 120;
     private static final String TITLE = "ThinMatrixTutorial";
 
-
     public static void createDisplay() {
 
         // GL Major and Minor versions are OpenGL version numbers
         ContextAttribs attribs = new ContextAttribs(GL_MAJOR_VERSION, GL_MINOR_VERSION).withForwardCompatible(true).withProfileCore(true);
 
         try {
+
             Display.setDisplayMode(new DisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT));
             Display.create(new PixelFormat(), attribs);
             Display.setTitle(TITLE);
+
         } catch(LWJGLException e) {
             e.printStackTrace();
+
         }
 
         // Setting GL Viewport to use the whole window
