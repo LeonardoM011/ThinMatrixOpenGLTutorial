@@ -4,6 +4,7 @@ import com.leo.renderengine.DisplayManager;
 import com.leo.renderengine.Loader;
 import com.leo.renderengine.RawModel;
 import com.leo.renderengine.Renderer;
+import com.leo.shaders.StaticShader;
 
 public class Main {
 
@@ -12,6 +13,7 @@ public class Main {
         DisplayManager.createDisplay();
         Loader loader = new Loader();
         Renderer renderer = new Renderer();
+        StaticShader shader = new StaticShader();
 
         // OpenGL expects vertices to be defined counter clockwise because of backface culling
         float[] vertices = {
@@ -32,12 +34,15 @@ public class Main {
 
             renderer.prepare();
 
+            shader.start();
             renderer.render(model);
+            shader.start();
 
             DisplayManager.updateDisplay();
 
         }
 
+        shader.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
 
